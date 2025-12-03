@@ -7,28 +7,56 @@ import {
   ScrollView,
   TouchableOpacity,
   SafeAreaView,
+  Switch,
 } from 'react-native';
-import { solutions } from './src/solutions';
+import { solutions, Solution } from './src/solutions';
+import { getInput } from './src/inputs';
+
+interface Results {
+  part1: string;
+  part2: string;
+  part1Correct?: boolean;
+  part2Correct?: boolean;
+}
 
 export default function App() {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
-  const [results, setResults] = useState<{ part1: string; part2: string } | null>(null);
+  const [useExample, setUseExample] = useState(true);
+  const [results, setResults] = useState<Results | null>(null);
 
   const runSolution = (day: number) => {
     const solution = solutions.find(s => s.day === day);
     if (!solution) return;
 
     setSelectedDay(day);
-    // TODO: Load actual input from inputs/dayXX.txt
-    const input = '';
+    const input = getInput(day, useExample);
 
     try {
       const part1 = String(solution.part1(input));
       const part2 = String(solution.part2(input));
-      setResults({ part1, part2 });
+
+      // Check against expected example answers
+      let part1Correct: boolean | undefined;
+      let part2Correct: boolean | undefined;
+
+      if (useExample && solution.example) {
+        if (solution.example.part1 !== undefined) {
+          part1Correct = part1 === String(solution.example.part1);
+        }
+        if (solution.example.part2 !== undefined) {
+          part2Correct = part2 === String(solution.example.part2);
+        }
+      }
+
+      setResults({ part1, part2, part1Correct, part2Correct });
     } catch (error) {
       setResults({ part1: 'Error', part2: 'Error' });
     }
+  };
+
+  const getVerificationIcon = (correct?: boolean) => {
+    if (correct === undefined) return '';
+    return correct ? ' ✅' : ' ❌';
   };
 
   return (
@@ -37,6 +65,22 @@ export default function App() {
       <View style={styles.header}>
         <Text style={styles.title}>🎄 Advent of Code 2025</Text>
         <Text style={styles.subtitle}>React Native Edition</Text>
+      </View>
+
+      {/* Example Toggle */}
+      <View style={styles.toggleContainer}>
+        <Text style={[styles.toggleLabel, !useExample && styles.toggleLabelActive]}>
+          Real Input
+        </Text>
+        <Switch
+          value={useExample}
+          onValueChange={setUseExample}
+          trackColor={{ false: '#333340', true: '#ffff66' }}
+          thumbColor={useExample ? '#0f0f23' : '#cccccc'}
+        />
+        <Text style={[styles.toggleLabel, useExample && styles.toggleLabelActive]}>
+          Example
+        </Text>
       </View>
 
       <ScrollView style={styles.content}>
@@ -67,15 +111,26 @@ export default function App() {
 
         {selectedDay && results && (
           <View style={styles.resultsContainer}>
-            <Text style={styles.resultsTitle}>Day {selectedDay} Results</Text>
+            <Text style={styles.resultsTitle}>
+              Day {selectedDay} {useExample ? '(Example)' : '(Real)'}
+            </Text>
             <View style={styles.resultBox}>
               <Text style={styles.resultLabel}>Part 1:</Text>
-              <Text style={styles.resultValue}>{results.part1}</Text>
+              <Text style={styles.resultValue}>
+                {results.part1}{getVerificationIcon(results.part1Correct)}
+              </Text>
             </View>
             <View style={styles.resultBox}>
               <Text style={styles.resultLabel}>Part 2:</Text>
-              <Text style={styles.resultValue}>{results.part2}</Text>
+              <Text style={styles.resultValue}>
+                {results.part2}{getVerificationIcon(results.part2Correct)}
+              </Text>
             </View>
+            {useExample && (
+              <Text style={styles.hint}>
+                💡 Fill in expected answers in src/solutions/index.ts
+              </Text>
+            )}
           </View>
         )}
       </ScrollView>
@@ -105,6 +160,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#cccccc',
     marginTop: 4,
+  },
+  toggleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    gap: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#333340',
+  },
+  toggleLabel: {
+    fontSize: 14,
+    color: '#666666',
+  },
+  toggleLabelActive: {
+    color: '#ffff66',
+    fontWeight: '600',
   },
   content: {
     flex: 1,
@@ -174,6 +246,10 @@ const styles = StyleSheet.create({
     color: '#00cc00',
     fontFamily: 'monospace',
   },
+  hint: {
+    marginTop: 12,
+    fontSize: 12,
+    color: '#666666',
+    fontStyle: 'italic',
+  },
 });
-
-

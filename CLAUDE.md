@@ -35,13 +35,15 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 
 ```
 2025-adventofcode/
-├── inputs/           # Raw puzzle input files (day01.txt, day02.txt, ...)
 ├── src/
+│   ├── inputs/       # Input data as TS modules
+│   │   ├── day01.ts  # exports { example, input }
+│   │   └── index.ts  # getInput(day, useExample)
 │   ├── solutions/    # One file per day (day01.ts, day02.ts, ...)
-│   │   └── index.ts  # Exports all solutions
+│   │   └── index.ts  # Exports all solutions + expected answers
 │   └── utils/        # Shared parsing and helper utilities
 │       └── parse.ts  # Common parsing functions
-├── App.tsx           # Main UI component
+├── App.tsx           # Main UI with Example/Real toggle
 └── [config files]    # package.json, tsconfig.json, etc.
 ```
 
@@ -62,10 +64,35 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 
 ### Adding a New Day
 
-1. Create `inputs/dayXX.txt` with the puzzle input
-2. Create `src/solutions/dayXX.ts` with part1 and part2 functions
-3. Export from `src/solutions/index.ts`
-4. Add to the `solutions` array in `index.ts`
+1. Create `src/inputs/dayXX.ts` with `example` and `input` exports
+2. Add the import to `src/inputs/index.ts`
+3. Create `src/solutions/dayXX.ts` with part1 and part2 functions
+4. Export from `src/solutions/index.ts`
+5. Add to the `solutions` array with expected example answers
+
+### Input Files (src/inputs/dayXX.ts)
+
+```typescript
+export const example = `
+3   4
+4   3
+`.trim();
+
+export const input = `
+// paste your real puzzle input here
+`.trim();
+```
+
+### Expected Answers (src/solutions/index.ts)
+
+```typescript
+{
+  day: 1,
+  part1: solveDay01Part1,
+  part2: solveDay01Part2,
+  example: { part1: 11, part2: 31 },  // from puzzle description
+}
+```
 
 ## Common Parsing Patterns
 
