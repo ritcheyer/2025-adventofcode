@@ -1,6 +1,6 @@
 # Advent of Code 2025 - React Native
 
-A React Native app for solving Advent of Code 2025 puzzles.
+A React Native app for solving [Advent of Code 2025](https://adventofcode.com/2025) puzzles.
 
 ## Getting Started
 
