@@ -24,7 +24,7 @@ npx expo start
 
 ## Project Structure
 
-```
+```plaintext
 aoc-2025-rn/
 ├── inputs/           # Puzzle input files
 │   ├── day01.txt
@@ -49,5 +49,3 @@ aoc-2025-rn/
 1. Add your puzzle input to `inputs/dayXX.txt`
 2. Implement your solution in `src/solutions/dayXX.ts`
 3. Export your solution from `src/solutions/index.ts`
-
-
