@@ -150,8 +150,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'normal',
     color: '#00cc00',
-    textShadowColor: '#00cc00',
-    textShadowRadius: 10,
+    textShadow: '0 0 10px #00cc00',
   },
   subtitle: {
     fontSize: 14,
