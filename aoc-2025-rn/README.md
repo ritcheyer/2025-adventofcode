@@ -7,7 +7,7 @@ A React Native app for solving Advent of Code 2025 puzzles.
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- npm
+- npm or yarn
 - Expo CLI
 
 ### Installation
@@ -49,5 +49,3 @@ aoc-2025-rn/
 1. Add your puzzle input to `inputs/dayXX.txt`
 2. Implement your solution in `src/solutions/dayXX.ts`
 3. Export your solution from `src/solutions/index.ts`
-
-
