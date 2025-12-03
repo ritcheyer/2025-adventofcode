@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     borderBottomColor: '#333340',
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 40,
+    fontWeight: 'normal',
     color: '#00cc00',
     textShadowColor: '#00cc00',
     textShadowRadius: 10,
