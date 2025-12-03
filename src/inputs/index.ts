@@ -17,3 +17,17 @@ export function getInput(day: number, useExample: boolean): string {
   return useExample ? dayInputs.example : dayInputs.input;
 }
 
+export function hasInput(day: number): boolean {
+  const dayInputs = inputs[day];
+  if (!dayInputs) return false;
+  // Consider a day "available" if it has either example or real input
+  return dayInputs.example.length > 0 || dayInputs.input.length > 0;
+}
+
+export function getAvailableDays(): number[] {
+  return Object.keys(inputs)
+    .map(Number)
+    .filter(hasInput)
+    .sort((a, b) => a - b);
+}
+

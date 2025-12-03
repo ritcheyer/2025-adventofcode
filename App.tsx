@@ -9,8 +9,8 @@ import {
   SafeAreaView,
   Switch,
 } from 'react-native';
-import { solutions, Solution } from './src/solutions';
-import { getInput } from './src/inputs';
+import { solutions } from './src/solutions';
+import { getInput, getAvailableDays } from './src/inputs';
 
 interface Results {
   part1: string;
@@ -85,22 +85,19 @@ export default function App() {
 
       <ScrollView style={styles.content}>
         <View style={styles.daysGrid}>
-          {Array.from({ length: 12 }, (_, i) => i + 1).map(day => (
+          {getAvailableDays().map(day => (
             <TouchableOpacity
               key={day}
               style={[
                 styles.dayButton,
                 selectedDay === day && styles.dayButtonSelected,
-                day > solutions.length && styles.dayButtonDisabled,
               ]}
               onPress={() => runSolution(day)}
-              disabled={day > solutions.length}
             >
               <Text
                 style={[
                   styles.dayButtonText,
                   selectedDay === day && styles.dayButtonTextSelected,
-                  day > solutions.length && styles.dayButtonTextDisabled,
                 ]}
               >
                 {day}
@@ -202,9 +199,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#00cc00',
     borderColor: '#00cc00',
   },
-  dayButtonDisabled: {
-    opacity: 0.3,
-  },
   dayButtonText: {
     fontSize: 18,
     fontWeight: '600',
@@ -212,9 +206,6 @@ const styles = StyleSheet.create({
   },
   dayButtonTextSelected: {
     color: '#0f0f23',
-  },
-  dayButtonTextDisabled: {
-    color: '#666666',
   },
   resultsContainer: {
     marginTop: 24,
