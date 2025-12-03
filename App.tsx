@@ -41,7 +41,7 @@ export default function App() {
 
       <ScrollView style={styles.content}>
         <View style={styles.daysGrid}>
-          {Array.from({ length: 25 }, (_, i) => i + 1).map(day => (
+          {Array.from({ length: 12 }, (_, i) => i + 1).map(day => (
             <TouchableOpacity
               key={day}
               style={[
