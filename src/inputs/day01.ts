@@ -10,8 +10,7 @@ L55
 L1
 L99
 R14
-L82
-`.trim();
+L82`.trim();
 
 export const input = `L23
 R14
