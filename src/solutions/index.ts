@@ -1,5 +1,6 @@
 export * from './day01';
 export * from './day02';
+export * from './day03';
 
 export interface Solution {
   day: number;
@@ -14,6 +15,7 @@ export interface Solution {
 
 import { solveDay01Part1, solveDay01Part2 } from './day01';
 import { solveDay02Part1, solveDay02Part2 } from './day02';
+import { solveDay03Part1, solveDay03Part2 } from './day03';
 
 export const solutions: Solution[] = [
   {
@@ -29,6 +31,13 @@ export const solutions: Solution[] = [
     part2: solveDay02Part2,
     // Fill these in from the puzzle description
     example: { part1: 1227775554, part2: 4174379265 },
+  },
+  {
+    day: 3,
+    part1: solveDay03Part1,
+    part2: solveDay03Part2,
+    // Fill these in from the puzzle description
+    example: { part1: 357, part2: undefined },
   },
 ];
 
