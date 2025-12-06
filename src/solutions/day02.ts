@@ -12,4 +12,3 @@ export function solveDay02Part2(input: string): number {
   return 0;
 }
 
-
