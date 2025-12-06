@@ -38,7 +38,15 @@ The rest of the ranges contain no invalid IDs.
 
 ## Pseudo-code
 
+```
 for each range in the sequence
   split each range into first and last ID on the -
     firstId = first[0]
     lastId = last[1]
+    convert firstId and lastId to integers
+
+    ignore firstId or lastId if:
+      either has a leading zero
+      does not have an even number of digits
+
+```
