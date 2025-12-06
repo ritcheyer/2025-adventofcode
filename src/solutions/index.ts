@@ -21,13 +21,14 @@ export const solutions: Solution[] = [
     part1: solveDay01Part1,
     part2: solveDay01Part2,
     // Fill these in from the puzzle description
-    example: { part1: undefined, part2: undefined },
+    example: { part1: 3, part2: 6 },
   },
   {
     day: 2,
     part1: solveDay02Part1,
     part2: solveDay02Part2,
-    example: { part1: undefined, part2: undefined },
+    // Fill these in from the puzzle description
+    example: { part1: 1227775554, part2: 4174379265 },
   },
 ];
 
