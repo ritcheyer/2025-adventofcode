@@ -63,7 +63,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <View style={styles.header}>
-        <Text style={styles.title}>🎄 Advent of Code 2025</Text>
+        <Text style={styles.title}>Advent of Code 2025</Text>
         <Text style={styles.subtitle}>React Native Edition</Text>
       </View>
 

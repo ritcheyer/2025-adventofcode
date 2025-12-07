@@ -33,7 +33,7 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 
 ## Project Structure
 
-```
+```plaintext
 2025-adventofcode/
 ├── src/
 │   ├── inputs/       # Input data as TS modules
@@ -69,6 +69,7 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 3. Create `src/solutions/dayXX.ts` with part1 and part2 functions
 4. Export from `src/solutions/index.ts`
 5. Add to the `solutions` array with expected example answers
+6. Create `notes/dayXX.md` with a **blank scaffold only** (do NOT prepopulate with puzzle details - that's the user's job)
 
 ### Input Files (src/inputs/dayXX.ts)
 
