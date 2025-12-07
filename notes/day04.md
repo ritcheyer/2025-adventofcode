@@ -77,4 +77,9 @@ grid.forEach((rowArray, rowIndex) => {
 
 ### Notes
 
+- Repeatedly remove accessible rolls (< 4 neighbors) until no more can be removed. Count the total removed. Example answer is 43.
 -
+
+1. Mutable grid structure (a 2d array)
+2. Batch the removals per iteration over the entire grid
+3. Loop over mutable grid until no more can be removed.
