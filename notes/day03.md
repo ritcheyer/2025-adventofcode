@@ -86,7 +86,16 @@ return sum;
 
 ## Pseudo-code - Part 2
 
-
+I cannot resort the numbers.
+I only have 12 spots
+Loop over the line indices
+  Take a slice of 12 digits minus number of digits remaining.
+  Find the windowMaxValue and windowMaxIndex in that slice
+  Store the windowMaxValue
+  Increment starting index to windowMaxIndex+1
+  Repeat until all 12 spots have been filled
+  OR
+  If windowSize = digitsRemaining, take them all.
 
 
 ```plaintext

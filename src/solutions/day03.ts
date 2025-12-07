@@ -42,14 +42,56 @@ export function solveDay03Part1(input: string): number {
   });
 
   const sum = joltages.reduce((a, b) => a + b, 0);
-  console.log('sum', sum);
   return sum;
 }
 
 export function solveDay03Part2(input: string): number {
-  const lines = parseLines(input);
+  const joltageLines = parseLines(input);
 
-  // TODO: Implement part 2
+  const joltages: number[] = [];
 
-  return 0;
+  function findLargestDigit(joltageLine: string): [number, number] {
+    const digits = joltageLine.split('').map(Number);
+
+    const maxDigit = Math.max(...digits);
+    const maxDigitIndex = digits.indexOf(maxDigit);
+
+    return [maxDigit, maxDigitIndex];
+  }
+
+  joltageLines.forEach((joltageLine) => {
+    let startIndex = 0;
+    let digitsRemaining = 12;
+    let windowEnd = 0;
+    let joltageLineLength = joltageLine.length;
+
+    let resultString = '';
+
+    while (digitsRemaining > 0) {
+
+      windowEnd = joltageLineLength - digitsRemaining;
+
+      const window = joltageLine.slice(startIndex, windowEnd + 1);
+      const [maxDigit, maxDigitIndex] = findLargestDigit(window);
+
+      resultString += maxDigit;
+
+      startIndex = startIndex + maxDigitIndex + 1;
+      digitsRemaining--;
+
+      if (digitsRemaining === 0) {
+        break;
+      }
+    }
+
+    // Convert the results array to a single string then to an integer.
+    const joltage = Number(resultString);
+
+    // Push the integer result to the joltages array.
+    joltages.push(joltage);
+
+  });
+
+  const sum = joltages.reduce((a, b) => a + b, 0);
+  return sum;
 }
