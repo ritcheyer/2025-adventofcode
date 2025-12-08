@@ -43,6 +43,10 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 │   │   └── index.ts  # Exports all solutions + expected answers
 │   └── utils/        # Shared parsing and helper utilities
 │       └── parse.ts  # Common parsing functions
+├── notes/            # Planning notes for each day
+├── scripts/          # Automation scripts
+│   └── new-day.sh    # Scaffold and register a new day
+├── templates/        # Templates for new days
 ├── App.tsx           # Main UI with Example/Real toggle
 └── [config files]    # package.json, tsconfig.json, etc.
 ```
@@ -59,17 +63,25 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 ### Naming
 
 - Solution files: `dayXX.ts` (zero-padded, e.g., `day01.ts`, `day12.ts`)
-- Input files: `dayXX.txt` (matching solution file names)
+- Input files: `dayXX.ts` (matching solution file names)
 - Solution functions: `solveDayXXPart1`, `solveDayXXPart2`
 
 ### Adding a New Day
 
-1. Create `src/inputs/dayXX.ts` with `example` and `input` exports
-2. Add the import to `src/inputs/index.ts`
-3. Create `src/solutions/dayXX.ts` with part1 and part2 functions
-4. Export from `src/solutions/index.ts`
-5. Add to the `solutions` array with expected example answers
-6. Create `notes/dayXX.md` with a **blank scaffold only** (do NOT prepopulate with puzzle details - that's the user's job)
+Run the scaffolding script:
+
+```bash
+./scripts/new-day.sh <day_number>
+# Example: ./scripts/new-day.sh 7
+```
+
+This automatically:
+1. Creates `src/inputs/dayXX.ts` with `example` and `input` exports
+2. Creates `src/solutions/dayXX.ts` with part1 and part2 functions
+3. Creates `notes/dayXX.md` with a blank scaffold
+4. Registers the day in both index files
+
+After scaffolding, fill in the expected example answers in `src/solutions/index.ts`.
 
 ### Input Files (src/inputs/dayXX.ts)
 
@@ -100,15 +112,18 @@ export const input = `
 Use utilities from `src/utils/parse.ts`:
 
 - `parseLines(input)` - Split into non-empty lines
-- `parseNumbers(line)` - Extract numbers from a line
+- `parseLinesWithEmpty(input)` - Split into lines, keeping empty ones
+- `parseNumbers(line)` - Extract numbers from a line (whitespace-separated)
 - `parseGrid(input)` - 2D character grid
-- `parseGroups(input)` - Split by blank lines
+- `parseNumberGrid(input)` - 2D number grid (single digits)
+- `parseGroups(input)` - Split by blank lines into groups
 
 ## Commands
 
 ```bash
-npm install      # Install dependencies
-npx expo start   # Start development server
+npm install               # Install dependencies
+npx expo start            # Start development server
+./scripts/new-day.sh 7    # Scaffold Day 7 (creates files + registers)
 ```
 
 ## Style Guidelines
