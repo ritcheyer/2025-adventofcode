@@ -1,0 +1,10 @@
+export function solveDayXXPart1(input: string): number {
+  // TODO: Implement part 1
+  return 0;
+}
+
+export function solveDayXXPart2(input: string): number {
+  // TODO: Implement part 2
+  return 0;
+}
+
