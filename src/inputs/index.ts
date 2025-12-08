@@ -3,6 +3,7 @@ import * as day02 from './day02';
 import * as day03 from './day03';
 import * as day04 from './day04';
 import * as day05 from './day05';
+import * as day06 from './day06';
 
 export interface DayInputs {
   example: string;
@@ -15,6 +16,7 @@ export const inputs: Record<number, DayInputs> = {
   3: day03,
   4: day04,
   5: day05,
+  6: day06,
 };
 
 export function getInput(day: number, useExample: boolean): string {
