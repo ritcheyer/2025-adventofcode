@@ -1,7 +1,5 @@
-// Day 01 Inputs
-// Paste your puzzle input and example here
-
-export const example = `L68
+export const example = `
+L68
 L30
 R48
 L5
@@ -12,7 +10,8 @@ L99
 R14
 L82`.trim();
 
-export const input = `L23
+export const input = `
+L23
 R14
 L50
 R27
