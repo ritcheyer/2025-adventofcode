@@ -31,5 +31,11 @@ foreach id in ids
 
 ### Notes
 
+#### Range Sorting
 
+- Sort the ranges by the min
+- Range Logic:
+  - if minOfRange2 <= maxOfRange1, they overlap and can be merged
+  - if minOfRange2 > maxOfRange1, they do not overlap and cannot be merged
 
+[min1, max(max1, max2)] => important bc we want to take larger of maxOfRange1 and maxOfRange2.
