@@ -107,11 +107,24 @@ return total
 
 ### Notes
 
-
+- Instead of left-to-right, we are now traversing right-to-left
+- Instead of reading the number horizontally, we are reading the number vertically.
+- Still need to use the operator in the bottom row
+-
 
 ### Pseudo-code
 
 ```plaintext
+
+for each column start to end:
+  digits = '';
+  for eat row:
+    char = row[column]
+    if char !== ' ';
+      digits += char
+  if digits is not empty
+    number = parseint(digits)
+    add to numbers array
 
 ```
 
