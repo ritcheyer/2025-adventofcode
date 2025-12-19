@@ -47,8 +47,20 @@ const extractNumbersHorizontally = (dataLines: string[], start: number, end: num
  * @returns The numbers extracted from the data lines
  */
 const extractNumbersVertically = (dataLines: string[], start: number, end: number): number[] => {
-  // TODO: Implement vertical extraction
-  return dataLines.map(line => line.slice(start, end + 1).trim()).filter(s => s !== '').map(Number);
+  const numbers: number[] = [];
+  for (let columnIndex = start; columnIndex <= end; columnIndex++) {
+    let digits = '';
+    for (let rowIndex = 0; rowIndex < dataLines.length; rowIndex++) {
+      const char = dataLines[rowIndex][columnIndex];
+      if (char !== ' ') {
+        digits += char;
+      }
+    }
+    if (digits !== '') {
+      numbers.push(parseInt(digits, 10));
+    }
+  }
+  return numbers;
 }
 
 /**
