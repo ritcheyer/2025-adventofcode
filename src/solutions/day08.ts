@@ -7,4 +7,3 @@ export function solveDay08Part2(input: string): number {
   // TODO: Implement part 2
   return 0;
 }
-
