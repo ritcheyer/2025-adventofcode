@@ -1,6 +1,8 @@
+import { parseLines } from '../utils/parse';
+
 export function solveDay07Part1(input: string): number {
   // this is the starting location of the tachyon beam
-  const grid = input.split('\n');
+  const grid = parseLines(input);
   const startingLocation = grid[0].indexOf('S', 0);
 
   let tachyonSet: Set<number> = new Set([startingLocation]);
@@ -29,12 +31,12 @@ export function solveDay07Part1(input: string): number {
 }
 
 export function solveDay07Part2(input: string): number {
-  const grid = input.split('\n');
+  const grid = parseLines(input);
   const startingLocation = grid[0].indexOf('S', 0);
 
   let timelines: Map<number, number> = new Map<number, number>();
 
-  timelines.set(startingLocation, 1)
+  timelines.set(startingLocation, 1);
 
   for (let row = 1; row < grid.length; row++) {
     const nextTimelines = new Map<number, number>();
@@ -56,4 +58,3 @@ export function solveDay07Part2(input: string): number {
   }
   return [...timelines.values()].reduce((a, b) => a + b, 0);
 }
-
