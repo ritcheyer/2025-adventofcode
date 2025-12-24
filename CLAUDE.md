@@ -86,6 +86,7 @@ Run the scaffolding script:
 ```
 
 This automatically:
+
 1. Creates `src/inputs/dayXX.ts` with `example` and `input` exports
 2. Creates `src/solutions/dayXX.ts` with part1 and part2 functions
 3. Creates `notes/dayXX.md` with a blank scaffold
