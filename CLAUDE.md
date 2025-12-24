@@ -66,6 +66,16 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 - Input files: `dayXX.ts` (matching solution file names)
 - Solution functions: `solveDayXXPart1`, `solveDayXXPart2`
 
+### Documentation
+
+- Use JSDoc (`/** */`) with `@param`/`@returns` for **functions**
+- Use simple `//` comments for inline code explanations
+
+### Commit Messages
+
+- Include what was solved and key learnings
+- Example: `Day 8 Part 1: Connect junction boxes using Union-Find ⭐`
+
 ### Adding a New Day
 
 Run the scaffolding script:
@@ -82,6 +92,8 @@ This automatically:
 4. Registers the day in both index files
 
 After scaffolding, fill in the expected example answers in `src/solutions/index.ts`.
+
+**Note:** If `notes/dayXX.md` already exists, the script will fail. Manually create the other files or delete the notes file first.
 
 ### Input Files (src/inputs/dayXX.ts)
 
