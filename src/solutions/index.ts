@@ -82,7 +82,7 @@ export const solutions: Solution[] = [
     part1: solveDay08Part1,
     part2: solveDay08Part2,
     // Fill these in from the puzzle description
-    example: { part1: undefined, part2: undefined },
+    example: { part1: 40, part2: undefined },
   },
 ];
 
