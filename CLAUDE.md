@@ -93,8 +93,6 @@ This automatically:
 
 After scaffolding, fill in the expected example answers in `src/solutions/index.ts`.
 
-**Note:** If `notes/dayXX.md` already exists, the script will fail. Manually create the other files or delete the notes file first.
-
 ### Input Files (src/inputs/dayXX.ts)
 
 ```typescript

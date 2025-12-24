@@ -24,36 +24,32 @@ NOTES_FILE="$PROJECT_ROOT/notes/day${PADDED_DAY}.md"
 INPUTS_INDEX="$PROJECT_ROOT/src/inputs/index.ts"
 SOLUTIONS_INDEX="$PROJECT_ROOT/src/solutions/index.ts"
 
-# Check if files already exist
-if [ -f "$SOLUTION_FILE" ]; then
-  echo "⚠️  Solution file already exists: $SOLUTION_FILE"
-  exit 1
-fi
-
-if [ -f "$INPUT_FILE" ]; then
-  echo "⚠️  Input file already exists: $INPUT_FILE"
-  exit 1
-fi
-
-if [ -f "$NOTES_FILE" ]; then
-  echo "⚠️  Notes file already exists: $NOTES_FILE"
-  exit 1
-fi
-
 echo "🎄 Scaffolding Day $DAY..."
 echo ""
 
-# === Create files from templates ===
+# === Create files from templates (skip if exists) ===
 echo "📝 Creating files..."
 
-sed "s/XX/${PADDED_DAY}/g" "$PROJECT_ROOT/templates/solution.ts.template" > "$SOLUTION_FILE"
-echo "   ✅ $SOLUTION_FILE"
+if [ -f "$SOLUTION_FILE" ]; then
+  echo "   ⏭️  Solution file already exists: $SOLUTION_FILE"
+else
+  sed "s/XX/${PADDED_DAY}/g" "$PROJECT_ROOT/templates/solution.ts.template" > "$SOLUTION_FILE"
+  echo "   ✅ $SOLUTION_FILE"
+fi
 
-sed "s/XX/${PADDED_DAY}/g" "$PROJECT_ROOT/templates/input.ts.template" > "$INPUT_FILE"
-echo "   ✅ $INPUT_FILE"
+if [ -f "$INPUT_FILE" ]; then
+  echo "   ⏭️  Input file already exists: $INPUT_FILE"
+else
+  sed "s/XX/${PADDED_DAY}/g" "$PROJECT_ROOT/templates/input.ts.template" > "$INPUT_FILE"
+  echo "   ✅ $INPUT_FILE"
+fi
 
-sed "s/XX/${DAY}/g" "$PROJECT_ROOT/templates/notes.md.template" > "$NOTES_FILE"
-echo "   ✅ $NOTES_FILE"
+if [ -f "$NOTES_FILE" ]; then
+  echo "   ⏭️  Notes file already exists: $NOTES_FILE"
+else
+  sed "s/XX/${DAY}/g" "$PROJECT_ROOT/templates/notes.md.template" > "$NOTES_FILE"
+  echo "   ✅ $NOTES_FILE"
+fi
 
 # === Register in index files ===
 echo ""
