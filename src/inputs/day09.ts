@@ -1,0 +1,6 @@
+export const example = `
+`.trim();
+
+export const input = `
+`.trim();
+
