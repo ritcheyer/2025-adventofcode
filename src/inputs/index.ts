@@ -1,12 +1,21 @@
 import * as day01 from './day01';
+import * as day10 from './day10';
 import * as day02 from './day02';
+import * as day10 from './day10';
 import * as day03 from './day03';
+import * as day10 from './day10';
 import * as day04 from './day04';
+import * as day10 from './day10';
 import * as day05 from './day05';
+import * as day10 from './day10';
 import * as day06 from './day06';
+import * as day10 from './day10';
 import * as day07 from './day07';
+import * as day10 from './day10';
 import * as day08 from './day08';
+import * as day10 from './day10';
 import * as day09 from './day09';
+import * as day10 from './day10';
 
 export interface DayInputs {
   example: string;
@@ -23,6 +32,7 @@ export const inputs: Record<number, DayInputs> = {
   7: day07,
   8: day08,
   9: day09,
+  10: day10,
 };
 
 export function getInput(day: number, useExample: boolean): string {

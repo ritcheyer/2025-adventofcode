@@ -1,12 +1,21 @@
 export * from './day01';
+export * from './day10';
 export * from './day02';
+export * from './day10';
 export * from './day03';
+export * from './day10';
 export * from './day04';
+export * from './day10';
 export * from './day05';
+export * from './day10';
 export * from './day06';
+export * from './day10';
 export * from './day07';
+export * from './day10';
 export * from './day08';
+export * from './day10';
 export * from './day09';
+export * from './day10';
 
 export interface Solution {
   day: number;
@@ -20,14 +29,23 @@ export interface Solution {
 }
 
 import { solveDay01Part1, solveDay01Part2 } from './day01';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay02Part1, solveDay02Part2 } from './day02';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay03Part1, solveDay03Part2 } from './day03';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay04Part1, solveDay04Part2 } from './day04';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay05Part1, solveDay05Part2 } from './day05';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay06Part1, solveDay06Part2 } from './day06';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay07Part1, solveDay07Part2 } from './day07';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay08Part1, solveDay08Part2 } from './day08';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 import { solveDay09Part1, solveDay09Part2 } from './day09';
+import { solveDay10Part1, solveDay10Part2 } from './day10';
 
 export const solutions: Solution[] = [
   {
@@ -92,6 +110,12 @@ export const solutions: Solution[] = [
     part2: solveDay09Part2,
     // Fill these in from the puzzle description
     example: { part1: 50, part2: 24 },
+  },
+  {
+    day: 10,
+    part1: solveDay10Part1,
+    part2: solveDay10Part2,
+    example: { part1: undefined, part2: undefined },
   },
 ];
 
