@@ -73,8 +73,22 @@ This is a React Native (Expo) app for solving Advent of Code 2025 puzzles. Each 
 
 ### Commit Messages
 
-- Include what was solved and key learnings
-- Example: `Day 8 Part 1: Connect junction boxes using Union-Find ⭐`
+Use multi-line commit messages with a subject line and detailed body:
+
+- **Subject line**: `Day X Part Y: Brief description ⭐` (or ⭐⭐ for both parts)
+- **Body**: Include what was solved, approach taken, key learnings, and any bugs fixed
+
+Example:
+
+```
+Day 9 Part 2: Validate rectangles using polygon edge intersection ⭐⭐
+
+- Part 2 constraint: rectangles must fit entirely inside the polygon
+- Built polygon edges from consecutive red tiles (with wrap-around)
+- Validation: check if any polygon edge cuts through candidate rectangle
+- Bug fix: loop was missing wrap-around edge (tiles.length - 1 → tiles.length)
+- Learned: console.log in hot loops kills browser performance
+```
 
 ### Adding a New Day
 

@@ -2,7 +2,7 @@
 
 ## Part 1
 
-### Notes
+### Part 1 -Notes
 
 - Given 2 sets of coordinates (x1, y1), and (x2, y2), find the distance between them.
 - Given those 2 sets of coordinates, find the other two corners
@@ -46,7 +46,7 @@ If the `current_area` is less than or equal to than the `largest_area`:
 If the `current_area` is greater than the `largest_area`:
   update the `largest_area`
 
-### Pseudo-code
+### Part 1 -Pseudo-code
 
 ```typescript
 function difference(a, b) {
@@ -81,10 +81,85 @@ loop over each pair of coordinates (coordA)
 
 ## Part 2
 
-### Notes
+### Part 2 - Notes
 
-### Pseudo-code
+#### Step 1: Parse the red tiles
 
-```plaintext
+- Same as Part 1 — you have a list of coordinates.
 
+#### Step 2: Build the polygon edges
+
+let edges = []
+
+for i=0 to tiles.length-1
+  current = tiles[i]
+  next = tiles[(i + 1) % tiles.length] // this is the loop around from end to beginning bit
+
+  if current.y === next.y
+    // this is a horiz edge
+    edges.push({
+      type: 'H',
+      y: current.y,
+      xMin: min(current.x, next.x),
+      xMax: max(current.x, next.x)
+    })
+
+  else
+    // this is a vert edge
+    edges.push({ type: 'V', x: current.x, yMin: min(current.y, next.y), yMax: max(current.y, next.y) })
+
+#### Step 3: For each pair of red tiles
+
+Find the rectangles based on the parsing in step 1 (e.g., j = i + 1)
+
+#### Step 4: Check if the rectangle is valid
+
+// given two corners `(x1, y1)` and `(x2, y2)`
+
+minX = min(x1,x2)
+maxX = max(x1,x2)
+minY = min(y1,y2)
+maxY = max(y1,y2)
+
+let isValid=true
+
+for each edge in edges
+  if edge.type === 'H':                        // this is a horizontal edge at y = edge.y
+    if edge.y > minY && edge.y < maxY:         // finds inside vertically
+      if edge.xMin < maxX &&  edge.xMax > minX // overlaps horizontally
+        isValid = false
+        break
+
+  if edge.type === 'V':                        // this is a vertical edge
+    if edge.x > minX && edge.x < maxX          // strictly inside horizontally
+      if edge.yMin < maxY && edge.yMax > minY: // overlaps vertically
+        isValid = false
+        break
+
+#### Step 5: Track maximum area among valid rectangles
+
+if isValid:
+  area = (maxX - minX + 1) * (maxY - minY +1)
+  maxArea = max(maxArea, area)
+
+### Part 2 - Pseudo-code
+
+```typescript
+
+function buildEdges(tiles) {}
+
+function isValidRectangle(tiles1, tiles2, edges) {}
+
+function solveDay09Part2(input):
+    const tiles = parse(input)
+    const edges = buildEdges(tiles)
+    let maxArea = 0
+
+    for i = 0 to tiles.length:
+        for j = i + 1 to tiles.length:
+            if isValidRectangle(tiles[i], tiles[j], edges):
+                area = calculateArea(tiles[i], tiles[j])
+                maxArea = max(maxArea, area)
+
+    return maxArea
 ```
