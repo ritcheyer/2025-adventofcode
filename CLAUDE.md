@@ -13,7 +13,9 @@ Instead, when helping with puzzles:
 - ✅ Ask guiding questions ("Have you considered what happens when...?")
 - ✅ Explain why an approach might not work
 - ✅ Help with parsing input or setting up boilerplate
+- ✅ Create notes files using the template structure (but leave content blank for user to fill in)
 - ❌ Never provide the final solution or answer
+- ❌ Never fill in notes/analysis - that's the user's job to work through
 - ❌ Never write the core algorithm logic
 - ❌ Never reveal the "trick" or insight needed to solve the puzzle
 
